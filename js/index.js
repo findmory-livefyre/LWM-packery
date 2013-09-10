@@ -5,7 +5,7 @@
 	var ListView = Livefyre.require('streamhub-sdk/views/list-view'),
 	$ = Livefyre.require('jquery');
 
-	var LivefyreReverseStream = Livefyre.require('streamhub-sdk/streams/livefyre-reverse-stream');
+	//var LivefyreReverseStream = Livefyre.require('streamhub-sdk/streams/livefyre-reverse-stream');
 
 	//handle the featured items - inject them into the stream
 	// var _oldSetInitData = LivefyreReverseStream.prototype._setInitData;
@@ -52,10 +52,12 @@
 	PackeryView.prototype = new ListView();
 	$.extend(PackeryView.prototype, Packery.prototype);
 
-	Packery.prototype.comparator = function (a, b) {
+	PackeryView.prototype.comparator = function (a, b) {
 		return a.createdAt - b.createdAt;
 	};
 
+
+ 	var load = new Date();
 	PackeryView.prototype.add = function (content) {
 		var self = this;
 		var contentView = ListView.prototype.add.apply(this, arguments);
@@ -71,21 +73,41 @@
 	 //    }
 
 
-      if (contentView.content.meta.content.annotations.featuredmessage) {
+		if (contentView.content.meta.content.annotations.featuredmessage) {
 			self._theBigOne = contentView;
 			contentView.$el.addClass('featured-content');
-			self.stamp([self._theBigOne.el]);
-            self.layout();
-        } else {
-            contentView.$el.addClass('item');
-            self.appended([contentView.el]);
-        }
+			self.stamp(self._theBigOne.el);
+		//	self.layout();
+			
+		} else {
+		    contentView.$el.addClass('item');
+
+		    //hacky way to see if the new items are coming from init or stream
+		    //change to better way!
+			if (self.contentViews.length > 1){
+				if((self.contentViews[self.contentViews.length - 1].createdAt).getTime() > (self.contentViews[self.contentViews.length - 2].createdAt).getTime() + 1000){
+						self.el.insertBefore(contentView.el,self.el.firstChild);
+						self.stamp(self._theBigOne.el);
+						self.prepended(contentView.el);
+						self.layout();
+					}else{
+						self.reloadItems();
+						self.stamp(self._theBigOne.el);
+						self.layout();
+					}
+			}
+			// console.log((self.contentViews.length > 0) ? contentView.createdAt > self.contentViews[self.contentViews.length - 1].createdAt : 0);
+		   // self.appended(contentView.el);
+		  // self.el.insertBefore(contentView.el, self.el.firstChild);
+		}
         
-      contentView.$el.on('imageLoaded.hub', function () {
-			  self.layout();
-			  console.log('new item with an image');
-		  });
+		contentView.$el.on('imageLoaded.hub', function () {
+		  self.layout();
+		  
+		});
         
+		
+
 		return contentView;
 	}
 
