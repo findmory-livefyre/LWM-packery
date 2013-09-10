@@ -62,15 +62,14 @@
 		var self = this;
 		var contentView = ListView.prototype.add.apply(this, arguments);
 
-		//if there's a new style attachment in the content
-		if (contentView.content.meta.content.attachments) {
-	        var rawOembed = contentView.content.meta.content.attachments[0],
-	            oembed = new Oembed(rawOembed);
-	        contentView.content.addAttachment(oembed);
-	        contentView.render(); 
-	    }
-
 		if (contentView.content.meta.content.annotations.featuredmessage) {
+			//if there's a new style attachment in the content
+			if (contentView.content.meta.content.attachments) {
+		        var rawOembed = contentView.content.meta.content.attachments[0],
+		            oembed = new Oembed(rawOembed);
+		        contentView.content.addAttachment(oembed);
+		        contentView.render(); 
+		    }
 			self._theBigOne = contentView;
 			contentView.$el.addClass('featured-content');
 			self.stamp(self._theBigOne.el);
