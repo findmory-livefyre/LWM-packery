@@ -1,0 +1,113 @@
+@charset "utf-8";
+
+body{
+  background-image:url('http://host.coxmediagroup.com/ajc/digital/rm/rm_sports_back.jpg');
+  background-color:#cccccc;
+}
+
+/* clearfix */
+.packery:after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+#mw_container {
+ /* width: 1000px;*/ /*was 800*/
+  margin: 0 auto;
+  margin-left : 10%;
+  margin-right : 10%;
+}
+
+.content.featured-content {
+  width: 47.7% !important; /*was 604px*/
+  position: absolute;
+  left: 24.8%; /*was 201*/
+  /*height: 100%;*/
+}
+
+.item {
+    float: left;
+}
+
+.content {
+  width: 23% !important;
+  text-align: left;
+ margin: .75%;
+} 
+
+.content-body {
+font-family: Tahoma, Arial, sans-serif !important;
+font-size: 17px !important;
+font-style: normal !important;
+font-variant: normal !important;
+font-weight: bold !important;
+line-height: 19px !important;
+color: #145a7c !important;
+}
+
+#hdr {
+  max-width: 1013px;
+  margin: 20px auto 30px auto;
+  font-size:75%;
+  font-family:Arial, Helvetica, sans-serif;
+  /*font-family: 'Oswald', sans-serif;*/
+  color:#CCCCCC;
+  text-align:center;
+ }
+.other-catl, .other-catl a, .other-catl a:visited {
+	text-align:right;
+	padding-bottom, margin-bottom: 0px;
+	color:  white;
+	text-decoration:none;
+ }  
+.other-catl a:hover {
+	color:#CCC;
+	text-shadow:0 0 20px yellow;
+}
+#hdr #ajc-logo {
+  width: 250px;
+  height: 70px;	
+	position:relative;
+	display:inline-block;
+	background-image:url('http://ec2.michaelory.com/braves/img/ajc-com-logo.png');
+	background-repeat:no-repeat;
+}
+  
+#hdr #ca-text {
+	font-family: 'Oswald', sans-serif;	
+	font-size:2.5em;
+	line-height: 1.5em;
+	color:#faa51a;
+	max-width:100%;
+    display: block;	
+}
+#hdr .beta {color:#CCC; font-family:Arial, Helvetica, sans-serif; }	
+   	
+#ad728x90 {
+	width: 728px;
+	height: 90px;
+	background-repeat: no-repeat;
+	position:relative !important;  
+	margin:10px auto;
+}
+
+@media only screen and (max-width: 870px) {
+    #hdr #ajc-logo {
+    	display:block;
+        float: none;
+        margin: 0 auto;
+    }	 
+}  
+
+@media only screen and (min-width: 100px) and (max-width: 500px) {
+    #wrapper {
+		margin-bottom: 50px;
+    }
+	
+    #hdr #ca-text {
+        font-size: 1.5em;
+    }	
+    #ad728x90 {
+        display: none;
+	}
+}
