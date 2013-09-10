@@ -69,7 +69,7 @@ color: #145a7c !important;
   height: 70px;	
 	position:relative;
 	display:inline-block;
-	background-image:url('http://ec2.michaelory.com/braves/img/ajc-com-logo.png');
+	background-image:url('../img/ajc-com-logo.png');
 	background-repeat:no-repeat;
 }
   

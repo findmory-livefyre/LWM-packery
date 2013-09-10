@@ -61,40 +61,34 @@
 	PackeryView.prototype.add = function (content) {
 		var self = this;
 		var contentView = ListView.prototype.add.apply(this, arguments);
-		//var didPrepend = false;
 
 		//if there's a new style attachment in the content
 		if (contentView.content.meta.content.attachments) {
 	        var rawOembed = contentView.content.meta.content.attachments[0],
 	            oembed = new Oembed(rawOembed);
 	        contentView.content.addAttachment(oembed);
-	        contentView.render();
-	        
+	        contentView.render(); 
 	    }
-
 
 		if (contentView.content.meta.content.annotations.featuredmessage) {
 			self._theBigOne = contentView;
 			contentView.$el.addClass('featured-content');
 			self.stamp(self._theBigOne.el);
-		//	self.layout();
 			
 		} else {
 		    contentView.$el.addClass('item');
-
 		    //hacky way to see if the new items are coming from init or stream
 		    //change to better way!
 			if (self.contentViews.length > 1){
-				if((self.contentViews[self.contentViews.length - 1].createdAt).getTime() > (self.contentViews[self.contentViews.length - 2].createdAt).getTime() + 1000){
+				if((self.contentViews[self.contentViews.length - 1].createdAt).getTime() > (self.contentViews[self.contentViews.length - 2].createdAt).getTime() + 200){
 						self.el.insertBefore(contentView.el,self.el.firstChild);
 						self.stamp(self._theBigOne.el);
 						self.prepended(contentView.el);
-						self.layout();
 					}else{
 						self.reloadItems();
 						self.stamp(self._theBigOne.el);
-						self.layout();
 					}
+					self.layout();
 			}
 		}
         

@@ -1,0 +1,90 @@
+@charset "utf-8";
+body{
+    background-image:url('http://host.coxmediagroup.com/ajc/digital/rm/rm_sports_back.jpg');
+    background-color:#cccccc;
+}
+ 
+#page-braves {
+    background-color: #000;
+    text-align: center;	
+    background-image: url('../img/sports_back.jpg');
+    background-repeat: no-repeat;  
+    background-attachment: fixed;
+}
+
+#mw_container {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+    
+
+#hdr {
+    max-width: 1013px;
+    margin: 20px auto 30px auto;
+    font-size:75%;
+    font-family:Arial, Helvetica, sans-serif;
+    /*font-family: 'Oswald', sans-serif;*/
+    color:#CCCCCC;
+    text-align:center;
+ }
+.other-catl, .other-catl a, .other-catl a:visited {
+	text-align:right;
+	padding-bottom, margin-bottom: 0px;
+	color:  white;
+	text-decoration:none;
+ }  
+.other-catl a:hover {
+	color:#CCC;
+	text-shadow:0 0 20px yellow;
+}
+#hdr #ajc-logo {
+    width: 250px;
+    height: 70px;	
+    position:relative;
+    display:inline-block;
+    background-image:url('../img/ajc-com-logo.png');
+    background-repeat:no-repeat;
+}
+#hdr #ca-text {
+	font-family: 'Oswald', sans-serif;	
+	font-size:2.5em;
+	line-height: 1.5em;
+	color:#faa51a;
+	max-width:100%;
+    display: block;	
+ }
+#hdr .beta {color:#CCC; font-family:Arial, Helvetica, sans-serif; }	
+   	
+#ad728x90 {
+    width: 728px;
+	height: 90px;
+	background-repeat: no-repeat;
+	position:relative !important;  
+    margin:10px auto;
+}
+
+
+@media only screen and (max-width: 870px) {
+    #hdr #ajc-logo {
+		display:block;
+        float: none;
+        margin: 0 auto;
+	 }	 
+}  
+
+@media only screen and (min-width: 100px) and (max-width: 500px) {
+    #wrapper {
+		margin-bottom: 50px;
+    }
+	
+  #hdr #ca-text {
+	  font-size: 1.5em;
+   }	
+    #ad728x90 {
+        display: none;
+	}
+
+    #ad320x50 {
+        display: block;
+    }
+}
