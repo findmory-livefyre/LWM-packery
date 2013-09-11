@@ -23,6 +23,7 @@ body{
   position: absolute;
   left: 24.8%; /*was 201*/
   /*height: 100%;*/
+  top: 0;
 }
 
 .item {

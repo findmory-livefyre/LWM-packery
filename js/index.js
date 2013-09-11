@@ -52,17 +52,12 @@
 	PackeryView.prototype = new ListView();
 	$.extend(PackeryView.prototype, Packery.prototype);
 
-	PackeryView.prototype.comparator = function (a, b) {
-		return a.createdAt - b.createdAt;
-	};
 
-
- 	var load = new Date();
 	PackeryView.prototype.add = function (content) {
 		var self = this;
 		var contentView = ListView.prototype.add.apply(this, arguments);
 
-		if (contentView.content.meta.content.annotations.featuredmessage) {
+		if (contentView.content.meta && contentView.content.meta.content.annotations.featuredmessage) {
 			//if there's a new style attachment in the content
 			if (contentView.content.meta.content.attachments) {
 		        var rawOembed = contentView.content.meta.content.attachments[0],
@@ -79,12 +74,12 @@
 		    //hacky way to see if the new items are coming from init or stream
 		    //change to better way!
 			if (self.contentViews.length > 1){
-				if((self.contentViews[self.contentViews.length - 1].createdAt).getTime() > (self.contentViews[self.contentViews.length - 2].createdAt).getTime() + 200){
+				if(self.contentViews[0] === contentView){
 						self.el.insertBefore(contentView.el,self.el.firstChild);
 						self.stamp(self._theBigOne.el);
 						self.prepended(contentView.el);
-					}else{
-						self.reloadItems();
+					}else{debugger;
+            self.reloadItems();
 						self.stamp(self._theBigOne.el);
 					}
 					self.layout();
@@ -112,5 +107,6 @@
 	});
 	
 	streamManager.bind(app).start();
+  
 	
 }());
