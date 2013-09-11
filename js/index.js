@@ -63,7 +63,7 @@
 		        var rawOembed = contentView.content.meta.content.attachments[0],
 		            oembed = new Oembed(rawOembed);
 		        contentView.content.addAttachment(oembed);
-		        contentView.render(); 
+		        //contentView.render(); 
 		    }
 			self._theBigOne = contentView;
 			contentView.$el.addClass('featured-content');
@@ -78,8 +78,8 @@
 						self.el.insertBefore(contentView.el,self.el.firstChild);
 						self.stamp(self._theBigOne.el);
 						self.prepended(contentView.el);
-					}else{debugger;
-            self.reloadItems();
+					}else{
+            			self.reloadItems();
 						self.stamp(self._theBigOne.el);
 					}
 					self.layout();
